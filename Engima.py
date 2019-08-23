@@ -321,7 +321,7 @@ print(ciphert)
 print("Decrypted:")
 plaint = rotor_ciph(rotor, rotor1, rotor2, refl, ciphert, keysg, keysr, walzl)
 print(plaint)
-x = input()
+
  # legitimitacy check to make sure no chars mapped to themselves
 tind = 0
 failed = False
