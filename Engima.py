@@ -107,7 +107,7 @@ def rotor_ciph(rotor, rotor1, rotor2, reflect, plain_t, startg, startr, walz): #
     global mapped
     global paired
     rst_rotors()
-    ciphert = "" # this should text plaintext as an argument and construct the paried array
+    ciphert = "" 
     charcnt = 0
     plaint = ""
     for char in plain_t: # plugboard substitions phase 1
@@ -121,7 +121,7 @@ def rotor_ciph(rotor, rotor1, rotor2, reflect, plain_t, startg, startr, walz): #
         rotor1 = rotate_rot(rotor1)
     for i in range(int(startg[2])):
         rotor2 = rotate_rot(rotor2)
-    # shift the ringstellung settings
+    # accounut for the ringstellung settings
     for i in range(int(startr[0])):
         rotor = shift_rotor(rotor)
     for i in range(int(startr[1])):
@@ -140,7 +140,7 @@ def rotor_ciph(rotor, rotor1, rotor2, reflect, plain_t, startg, startr, walz): #
         elif char not in char1 and char not in charu:
             print("Cannot encrypt special characters")
         else:
-            if charcnt > 76: # whats the itnerval here 25-51-76 or 25-52-77?
+            if charcnt > 76: 
                 charcnt = 0
             elif charcnt < 26:
                 if walz[0]==1: # rotor notch settings
@@ -228,7 +228,7 @@ def rotor_ciph(rotor, rotor1, rotor2, reflect, plain_t, startg, startr, walz): #
             refl = reflect[onepass] # put intor reflector
             charn = invrotor[invrotor1[invrotor2[refl]]] # back through invrotors in reverse
             ctchar = char1[charn]
-            if ctchar in paired: # plugboard, use paired ? for some reason ?
+            if ctchar in paired: # plugboard
                 for pair in plugb:
                     if ctchar in pair:
                         ctchar = pair[0] # plugboard substitutions phase 2
@@ -251,7 +251,7 @@ plugboard()
 plaint = input("Text to be encrypted:")
 
 keyg = input("Enter Grundstellung key: format 00-00-00")
-while len(keyg) > 8 or len(keyg) < 5: # needs more compmlex rules to check for -
+while len(keyg) > 8 or len(keyg) < 5: 
     print("Please enter the correct format for the key")
     keyg = input("Key:")
 for char in keyg:
@@ -327,7 +327,7 @@ tind = 0
 failed = False
 for i in range(len(plaint)):
     if ciphert[tind]==plaint[tind]:
-        print("Failed. There a character mapped to itself.")
+        print("Failed. A character mapped to itself.")
         failed = True
 if failed==False:
     print("Passed! No characters mapped to themselves")
